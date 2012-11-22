@@ -1,0 +1,9 @@
+config.sub.diff
+libstdc++-generic.diff
+gcc-config-musl.diff
+gomp-posix.diff
+x86.diff
+arm.diff
+mips.diff
+powerpc.diff
+microblaze.diff

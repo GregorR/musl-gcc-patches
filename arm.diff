@@ -1,0 +1,34 @@
+# HG changeset patch
+# Parent 53f3e21a7d14d0514ec7cb9ffb67b24dcf1f9fc9
+Support for arm-linux-musl.
+
+
+diff -r 53f3e21a7d14 -r 0a4e297edad6 gcc/config/arm/linux-eabi.h
+--- a/gcc/config/arm/linux-eabi.h	Wed Nov 21 21:21:21 2012 -0500
++++ b/gcc/config/arm/linux-eabi.h	Wed Nov 21 21:21:54 2012 -0500
+@@ -64,6 +64,10 @@
+ #undef  GLIBC_DYNAMIC_LINKER
+ #define GLIBC_DYNAMIC_LINKER "/lib/ld-linux.so.3"
+ 
++/* musl has no "classic" (i.e. broken) mode */
++#undef  MUSL_DYNAMIC_LINKER
++#define MUSL_DYNAMIC_LINKER "/lib/ld-musl-arm.so.1"
++
+ /* At this point, bpabi.h will have clobbered LINK_SPEC.  We want to
+    use the GNU/Linux version, not the generic BPABI version.  */
+ #undef  LINK_SPEC
+diff -r 53f3e21a7d14 -r 0a4e297edad6 libitm/config/arm/hwcap.cc
+--- a/libitm/config/arm/hwcap.cc	Wed Nov 21 21:21:21 2012 -0500
++++ b/libitm/config/arm/hwcap.cc	Wed Nov 21 21:21:54 2012 -0500
+@@ -40,7 +40,11 @@
+ 
+ #ifdef __linux__
+ #include <unistd.h>
++#ifdef __GLIBC__
+ #include <sys/fcntl.h>
++#else
++#include <fcntl.h>
++#endif
+ #include <elf.h>
+ 
+ static void __attribute__((constructor))

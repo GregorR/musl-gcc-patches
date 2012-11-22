@@ -1,0 +1,16 @@
+# HG changeset patch
+# Parent de922e533313cc0a2af7e1f69a65ed69263904cd
+Support (incomplete) for microblaze-linux-musl.
+
+
+diff -r de922e533313 -r 9c1fad374eec gcc/config.gcc
+--- a/gcc/config.gcc	Wed Nov 21 21:24:08 2012 -0500
++++ b/gcc/config.gcc	Wed Nov 21 21:24:23 2012 -0500
+@@ -1725,6 +1725,7 @@
+ 	tm_file="${tm_file} dbxelf.h gnu-user.h linux.h microblaze/linux.h"
+ 	c_target_objs="${c_target_objs} microblaze-c.o"
+ 	cxx_target_objs="${cxx_target_objs} microblaze-c.o"
++        tmake_file="${tmake_file} microblaze/t-microblaze"
+ 	;;
+ microblaze*-*-*)
+         tm_file="${tm_file} dbxelf.h"
