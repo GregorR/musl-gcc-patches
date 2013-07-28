@@ -1,56 +1,28 @@
 # HG changeset patch
-# Parent 0afd9d82498d2cd30aa78529ff25f211bdc0c3b9
+# Parent 10fd4ac52b9577b778175e7836212acda12f20d5
 Support for i386-linux-musl and x86_64-linux-musl.
 
-
-diff -r 0afd9d82498d -r 53f3e21a7d14 gcc/config/i386/linux.h
---- a/gcc/config/i386/linux.h	Wed Nov 21 21:20:22 2012 -0500
-+++ b/gcc/config/i386/linux.h	Wed Nov 21 21:21:21 2012 -0500
-@@ -22,3 +22,4 @@
- 
- #define GNU_USER_LINK_EMULATION "elf_i386"
+diff -r 10fd4ac52b95 gcc/config/i386/linux.h
+--- a/gcc/config/i386/linux.h	Sun Jul 28 12:33:22 2013 -0400
++++ b/gcc/config/i386/linux.h	Sun Jul 28 12:34:21 2013 -0400
+@@ -93,6 +93,7 @@
+ /* These macros may be overridden in k*bsd-gnu.h and i386/k*bsd-gnu.h. */
+ #define LINK_EMULATION "elf_i386"
  #define GLIBC_DYNAMIC_LINKER "/lib/ld-linux.so.2"
 +#define MUSL_DYNAMIC_LINKER "/lib/ld-musl-i386.so.1"
-diff -r 0afd9d82498d -r 53f3e21a7d14 gcc/config/i386/linux64.h
---- a/gcc/config/i386/linux64.h	Wed Nov 21 21:20:22 2012 -0500
-+++ b/gcc/config/i386/linux64.h	Wed Nov 21 21:21:21 2012 -0500
-@@ -31,3 +31,7 @@
+ 
+ #undef  ASM_SPEC
+ #define ASM_SPEC \
+diff -r 10fd4ac52b95 gcc/config/i386/linux64.h
+--- a/gcc/config/i386/linux64.h	Sun Jul 28 12:33:22 2013 -0400
++++ b/gcc/config/i386/linux64.h	Sun Jul 28 12:34:21 2013 -0400
+@@ -65,6 +65,9 @@
  #define GLIBC_DYNAMIC_LINKER32 "/lib/ld-linux.so.2"
  #define GLIBC_DYNAMIC_LINKER64 "/lib64/ld-linux-x86-64.so.2"
- #define GLIBC_DYNAMIC_LINKERX32 "/libx32/ld-linux-x32.so.2"
-+
+ 
 +#define MUSL_DYNAMIC_LINKER32 "/lib/ld-musl-i386.so.1"
 +#define MUSL_DYNAMIC_LINKER64 "/lib/ld-musl-x86_64.so.1"
-+#define MUSL_DYNAMIC_LINKERX32 "/lib/ld-musl-x32.so.1"
-diff -r 0afd9d82498d -r 53f3e21a7d14 libitm/config/linux/x86/tls.h
---- a/libitm/config/linux/x86/tls.h	Wed Nov 21 21:20:22 2012 -0500
-+++ b/libitm/config/linux/x86/tls.h	Wed Nov 21 21:21:21 2012 -0500
-@@ -25,16 +25,19 @@
- #ifndef LIBITM_X86_TLS_H
- #define LIBITM_X86_TLS_H 1
- 
--#if defined(__GLIBC_PREREQ) && __GLIBC_PREREQ(2, 10)
-+#if defined(__GLIBC_PREREQ)
-+#if __GLIBC_PREREQ(2, 10)
- /* Use slots in the TCB head rather than __thread lookups.
-    GLIBC has reserved words 10 through 13 for TM.  */
- #define HAVE_ARCH_GTM_THREAD 1
- #define HAVE_ARCH_GTM_THREAD_DISP 1
- #endif
-+#endif
- 
- #include "config/generic/tls.h"
- 
--#if defined(__GLIBC_PREREQ) && __GLIBC_PREREQ(2, 10)
-+#if defined(__GLIBC_PREREQ)
-+#if __GLIBC_PREREQ(2, 10)
- namespace GTM HIDDEN {
- 
- #ifdef __x86_64__
-@@ -101,5 +104,6 @@
- 
- } // namespace GTM
- #endif /* >= GLIBC 2.10 */
-+#endif
- 
- #endif // LIBITM_X86_TLS_H
++
+ #if TARGET_64BIT_DEFAULT
+ #define SPEC_32 "m32"
+ #define SPEC_64 "!m32"
