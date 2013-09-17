@@ -5,8 +5,8 @@ unwind-dliterate.diff
 gcc-config-dliterate.diff
 kill-fixincludes.diff
 libssp.diff
+config-sub.diff
 x86.diff
 arm.diff
 mips.diff
 powerpc.diff
-config-sub.diff
