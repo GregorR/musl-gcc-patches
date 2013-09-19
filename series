@@ -2,9 +2,8 @@ libstdc++-generic.diff
 gcc-config-musl.diff
 gomp-posix.diff
 unwind-dliterate.diff
-gcc-config-dliterate.diff
+gcc-autoconf-musl.diff
 kill-fixincludes.diff
-libssp.diff
 x86.diff
 arm.diff
 mips.diff
