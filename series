@@ -9,3 +9,4 @@ arm.diff
 mips.diff
 powerpc.diff
 aarch64.diff
+microblaze.diff
