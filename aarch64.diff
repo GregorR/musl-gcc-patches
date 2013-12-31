@@ -1,5 +1,6 @@
---- a/gcc/config/aarch64/aarch64-linux.h	2013-01-10 21:38:27.000000000 +0100
-+++ b/gcc/config/aarch64/aarch64-linux.h	2013-09-12 21:39:34.004829498 +0200
+diff -r d7ce17b2f2d6 gcc/config/aarch64/aarch64-linux.h
+--- a/gcc/config/aarch64/aarch64-linux.h	Tue Dec 31 14:55:17 2013 -0500
++++ b/gcc/config/aarch64/aarch64-linux.h	Tue Dec 31 14:55:20 2013 -0500
 @@ -21,7 +21,11 @@
  #ifndef GCC_AARCH64_LINUX_H
  #define GCC_AARCH64_LINUX_H
@@ -10,5 +11,5 @@
  #define GLIBC_DYNAMIC_LINKER "/lib/ld-linux-aarch64.so.1"
 +#define MUSL_DYNAMIC_LINKER "/lib/ld-musl-aarch64.so.1"
  
- #define LINUX_TARGET_LINK_SPEC  "%{h*}		\
-    %{static:-Bstatic}				\
+ #define CPP_SPEC "%{pthread:-D_REENTRANT}"
+ 

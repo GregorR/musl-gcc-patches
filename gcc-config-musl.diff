@@ -1,11 +1,11 @@
 # HG changeset patch
-# Parent 572f7b4d1c50cefde3aa2c43d06040fc308ad989
+# Parent e5b4564f249f8634194bdabef4b3057d0e54ee97
 Adding -mmusl as a musl libc specifier, and the necessary hacks for it to know how to find musl's dynamic linker.
 
-diff -r 572f7b4d1c50 gcc/config.gcc
---- a/gcc/config.gcc	Sun Sep 08 22:58:18 2013 -0400
-+++ b/gcc/config.gcc	Mon Sep 09 12:48:34 2013 -0400
-@@ -549,7 +549,7 @@
+diff -r e5b4564f249f gcc/config.gcc
+--- a/gcc/config.gcc	Tue Dec 31 14:54:49 2013 -0500
++++ b/gcc/config.gcc	Tue Dec 31 14:54:52 2013 -0500
+@@ -550,7 +550,7 @@
  esac
  
  # Common C libraries.
@@ -14,7 +14,7 @@ diff -r 572f7b4d1c50 gcc/config.gcc
  
  # Common parts for widely ported systems.
  case ${target} in
-@@ -652,6 +652,9 @@
+@@ -653,6 +653,9 @@
      *-*-*uclibc*)
        tm_defines="$tm_defines DEFAULT_LIBC=LIBC_UCLIBC"
        ;;
@@ -24,9 +24,9 @@ diff -r 572f7b4d1c50 gcc/config.gcc
      *)
        tm_defines="$tm_defines DEFAULT_LIBC=LIBC_GLIBC"
        ;;
-diff -r 572f7b4d1c50 gcc/config/linux.h
---- a/gcc/config/linux.h	Sun Sep 08 22:58:18 2013 -0400
-+++ b/gcc/config/linux.h	Mon Sep 09 12:48:34 2013 -0400
+diff -r e5b4564f249f gcc/config/linux.h
+--- a/gcc/config/linux.h	Tue Dec 31 14:54:49 2013 -0500
++++ b/gcc/config/linux.h	Tue Dec 31 14:54:52 2013 -0500
 @@ -32,10 +32,12 @@
  #define OPTION_GLIBC  (DEFAULT_LIBC == LIBC_GLIBC)
  #define OPTION_UCLIBC (DEFAULT_LIBC == LIBC_UCLIBC)
@@ -172,9 +172,9 @@ diff -r 572f7b4d1c50 gcc/config/linux.h
 +    { 0, 0, 0, 0, 0, 0 }				\
 +  }
 +#endif
-diff -r 572f7b4d1c50 gcc/config/linux.opt
---- a/gcc/config/linux.opt	Sun Sep 08 22:58:18 2013 -0400
-+++ b/gcc/config/linux.opt	Mon Sep 09 12:48:34 2013 -0400
+diff -r e5b4564f249f gcc/config/linux.opt
+--- a/gcc/config/linux.opt	Tue Dec 31 14:54:49 2013 -0500
++++ b/gcc/config/linux.opt	Tue Dec 31 14:54:52 2013 -0500
 @@ -30,3 +30,7 @@
  muclibc
  Target Report RejectNegative Var(linux_libc,LIBC_UCLIBC) Negative(mbionic)
@@ -183,9 +183,9 @@ diff -r 572f7b4d1c50 gcc/config/linux.opt
 +mmusl
 +Target Report RejectNegative Var(linux_libc,LIBC_MUSL) Negative(mglibc)
 +Use musl C library
-diff -r 572f7b4d1c50 gcc/ginclude/stddef.h
---- a/gcc/ginclude/stddef.h	Sun Sep 08 22:58:18 2013 -0400
-+++ b/gcc/ginclude/stddef.h	Mon Sep 09 12:48:34 2013 -0400
+diff -r e5b4564f249f gcc/ginclude/stddef.h
+--- a/gcc/ginclude/stddef.h	Tue Dec 31 14:54:49 2013 -0500
++++ b/gcc/ginclude/stddef.h	Tue Dec 31 14:54:52 2013 -0500
 @@ -181,6 +181,7 @@
  #ifndef _GCC_SIZE_T
  #ifndef _SIZET_
