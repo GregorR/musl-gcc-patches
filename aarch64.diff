@@ -1,15 +1,12 @@
-diff -r d7ce17b2f2d6 gcc/config/aarch64/aarch64-linux.h
---- a/gcc/config/aarch64/aarch64-linux.h	Tue Dec 31 14:55:17 2013 -0500
-+++ b/gcc/config/aarch64/aarch64-linux.h	Tue Dec 31 14:55:20 2013 -0500
-@@ -21,7 +21,11 @@
- #ifndef GCC_AARCH64_LINUX_H
- #define GCC_AARCH64_LINUX_H
+diff -r 813971b9f083 gcc/config/aarch64/aarch64-linux.h
+--- a/gcc/config/aarch64/aarch64-linux.h	Tue May 20 11:06:11 2014 -0400
++++ b/gcc/config/aarch64/aarch64-linux.h	Tue May 20 11:06:14 2014 -0400
+@@ -23,6 +23,8 @@
  
-+/* The AArch64 port currently supports two dynamic linkers:
-+   - ld-linux-aarch64.so.1 - GLIBC dynamic linker
-+   - ld-musl-aarch64.so.1 - musl libc dynamic linker  */
- #define GLIBC_DYNAMIC_LINKER "/lib/ld-linux-aarch64.so.1"
+ #define GLIBC_DYNAMIC_LINKER "/lib/ld-linux-aarch64%{mbig-endian:_be}.so.1"
+ 
 +#define MUSL_DYNAMIC_LINKER "/lib/ld-musl-aarch64.so.1"
- 
++
  #define CPP_SPEC "%{pthread:-D_REENTRANT}"
  
+ #define LINUX_TARGET_LINK_SPEC  "%{h*}		\
