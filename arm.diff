@@ -1,10 +1,10 @@
 # HG changeset patch
-# Parent 6738fd6f6fcc2a72f2ba527bda3325642af26885
+# Parent 42eeea84a212601568b5a6d17eb28cfba4b45e1d
 Support for arm-linux-musl.
 
-diff -r 6738fd6f6fcc gcc/config/arm/linux-eabi.h
---- a/gcc/config/arm/linux-eabi.h	Tue Dec 31 14:55:08 2013 -0500
-+++ b/gcc/config/arm/linux-eabi.h	Tue Dec 31 14:55:11 2013 -0500
+diff -r 42eeea84a212 gcc/config/arm/linux-eabi.h
+--- a/gcc/config/arm/linux-eabi.h	Tue May 27 17:19:07 2014 -0400
++++ b/gcc/config/arm/linux-eabi.h	Tue May 27 17:19:11 2014 -0400
 @@ -77,6 +77,23 @@
      %{mfloat-abi=soft*:" GLIBC_DYNAMIC_LINKER_SOFT_FLOAT "} \
      %{!mfloat-abi=*:" GLIBC_DYNAMIC_LINKER_DEFAULT "}"
@@ -29,9 +29,9 @@ diff -r 6738fd6f6fcc gcc/config/arm/linux-eabi.h
  /* At this point, bpabi.h will have clobbered LINK_SPEC.  We want to
     use the GNU/Linux version, not the generic BPABI version.  */
  #undef  LINK_SPEC
-diff -r 6738fd6f6fcc libitm/config/arm/hwcap.cc
---- a/libitm/config/arm/hwcap.cc	Tue Dec 31 14:55:08 2013 -0500
-+++ b/libitm/config/arm/hwcap.cc	Tue Dec 31 14:55:11 2013 -0500
+diff -r 42eeea84a212 libitm/config/arm/hwcap.cc
+--- a/libitm/config/arm/hwcap.cc	Tue May 27 17:19:07 2014 -0400
++++ b/libitm/config/arm/hwcap.cc	Tue May 27 17:19:11 2014 -0400
 @@ -40,7 +40,11 @@
  
  #ifdef __linux__

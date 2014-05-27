@@ -21,13 +21,12 @@ Signed-off-by: David Holsgrove <david.holsgrove@xilinx.com>
  gcc/config/microblaze/microblaze.h |    6 ++++++
  1 file changed, 6 insertions(+)
 
-diff --git a/gcc/config/microblaze/microblaze.h b/gcc/config/microblaze/microblaze.h
-index 19cdfed..e772a3f 100644
---- a/gcc/config/microblaze/microblaze.h
-+++ b/gcc/config/microblaze/microblaze.h
-@@ -213,6 +213,12 @@ extern enum pipeline_type microblaze_pipe;
- #define STRICT_ALIGNMENT        1
- #define PCC_BITFIELD_TYPE_MATTERS 1
+diff -r 2af2905d4b10 gcc/config/microblaze/microblaze.h
+--- a/gcc/config/microblaze/microblaze.h	Tue May 27 17:19:22 2014 -0400
++++ b/gcc/config/microblaze/microblaze.h	Tue May 27 17:19:26 2014 -0400
+@@ -219,6 +219,12 @@
+ #undef PTRDIFF_TYPE
+ #define PTRDIFF_TYPE "int"
  
 +#undef SIZE_TYPE
 +#define SIZE_TYPE "unsigned int"
@@ -38,6 +37,3 @@ index 19cdfed..e772a3f 100644
  #define CONSTANT_ALIGNMENT(EXP, ALIGN)					\
    ((TREE_CODE (EXP) == STRING_CST  || TREE_CODE (EXP) == CONSTRUCTOR)	\
     && (ALIGN) < BITS_PER_WORD						\
--- 
-1.7.9.5
-

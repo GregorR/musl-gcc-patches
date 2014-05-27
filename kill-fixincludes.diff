@@ -1,10 +1,10 @@
 # HG changeset patch
-# Parent 600a8a422ccaf5627ad1f5a138e7398df2b9e9d8
+# Parent 5e0be25b469181f67d89382c7da201510c229f90
 Get rid of ever-broken fixincludes on musl.
 
-diff -r 600a8a422cca fixincludes/mkfixinc.sh
---- a/fixincludes/mkfixinc.sh	Tue Dec 31 14:55:01 2013 -0500
-+++ b/fixincludes/mkfixinc.sh	Tue Dec 31 14:55:04 2013 -0500
+diff -r 5e0be25b4691 fixincludes/mkfixinc.sh
+--- a/fixincludes/mkfixinc.sh	Tue May 27 17:19:01 2014 -0400
++++ b/fixincludes/mkfixinc.sh	Tue May 27 17:19:04 2014 -0400
 @@ -19,7 +19,8 @@
      powerpc-*-eabi*    | \
      powerpc-*-rtems*   | \
