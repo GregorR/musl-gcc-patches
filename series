@@ -11,4 +11,5 @@ powerpc.diff
 aarch64.diff
 microblaze.diff
 microblaze-size_t.diff
+microblaze-miscompile.diff
 sh.diff
