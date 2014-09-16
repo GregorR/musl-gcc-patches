@@ -13,3 +13,5 @@ microblaze.diff
 microblaze-size_t.diff
 microblaze-miscompile.diff
 sh.diff
+bug_61801.diff
+universal_initializer.diff
