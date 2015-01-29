@@ -1,6 +1,6 @@
-diff -r 2f999fc929da gcc/config/sh/linux.h
+diff -r 94ebb0799454 gcc/config/sh/linux.h
 --- a/gcc/config/sh/linux.h	Fri Sep 28 16:32:03 2012 +1000
-+++ b/gcc/config/sh/linux.h	Tue May 20 11:06:23 2014 -0400
++++ b/gcc/config/sh/linux.h	Thu Jan 29 14:06:41 2015 -0500
 @@ -43,7 +43,14 @@
  
  #define TARGET_ASM_FILE_END file_end_indicate_exec_stack

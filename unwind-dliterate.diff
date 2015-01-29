@@ -1,6 +1,6 @@
-diff -r 95f4f1d7668b libgcc/unwind-dw2-fde-dip.c
---- a/libgcc/unwind-dw2-fde-dip.c	Tue May 20 11:05:48 2014 -0400
-+++ b/libgcc/unwind-dw2-fde-dip.c	Tue May 20 11:05:52 2014 -0400
+diff -r ffa879f29d52 libgcc/unwind-dw2-fde-dip.c
+--- a/libgcc/unwind-dw2-fde-dip.c	Thu Jan 29 14:06:15 2015 -0500
++++ b/libgcc/unwind-dw2-fde-dip.c	Thu Jan 29 14:06:18 2015 -0500
 @@ -46,33 +46,13 @@
  #include "unwind-compat.h"
  #include "gthr.h"
