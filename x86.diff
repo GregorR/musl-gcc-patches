@@ -1,18 +1,18 @@
 # HG changeset patch
-# Parent dd2004fbd61c182919b800cec63806060b4228e5
+# Parent e2d9d64d6835b26cc5cb052112cfebce6280b00a
 Support for i386-linux-musl and x86_64-linux-musl.
 
-diff -r dd2004fbd61c gcc/config/i386/linux.h
---- a/gcc/config/i386/linux.h	Tue May 27 17:19:04 2014 -0400
-+++ b/gcc/config/i386/linux.h	Tue May 27 17:19:07 2014 -0400
+diff -r e2d9d64d6835 gcc/config/i386/linux.h
+--- a/gcc/config/i386/linux.h	Thu Jan 29 13:41:48 2015 -0500
++++ b/gcc/config/i386/linux.h	Thu Jan 29 13:41:51 2015 -0500
 @@ -21,3 +21,4 @@
  
  #define GNU_USER_LINK_EMULATION "elf_i386"
  #define GLIBC_DYNAMIC_LINKER "/lib/ld-linux.so.2"
 +#define MUSL_DYNAMIC_LINKER "/lib/ld-musl-i386.so.1"
-diff -r dd2004fbd61c gcc/config/i386/linux64.h
---- a/gcc/config/i386/linux64.h	Tue May 27 17:19:04 2014 -0400
-+++ b/gcc/config/i386/linux64.h	Tue May 27 17:19:07 2014 -0400
+diff -r e2d9d64d6835 gcc/config/i386/linux64.h
+--- a/gcc/config/i386/linux64.h	Thu Jan 29 13:41:48 2015 -0500
++++ b/gcc/config/i386/linux64.h	Thu Jan 29 13:41:51 2015 -0500
 @@ -30,3 +30,7 @@
  #define GLIBC_DYNAMIC_LINKER32 "/lib/ld-linux.so.2"
  #define GLIBC_DYNAMIC_LINKER64 "/lib64/ld-linux-x86-64.so.2"
@@ -21,9 +21,9 @@ diff -r dd2004fbd61c gcc/config/i386/linux64.h
 +#define MUSL_DYNAMIC_LINKER32 "/lib/ld-musl-i386.so.1"
 +#define MUSL_DYNAMIC_LINKER64 "/lib/ld-musl-x86_64.so.1"
 +#define MUSL_DYNAMIC_LINKERX32 "/lib/ld-musl-x32.so.1"
-diff -r dd2004fbd61c libitm/config/linux/x86/tls.h
---- a/libitm/config/linux/x86/tls.h	Tue May 27 17:19:04 2014 -0400
-+++ b/libitm/config/linux/x86/tls.h	Tue May 27 17:19:07 2014 -0400
+diff -r e2d9d64d6835 libitm/config/linux/x86/tls.h
+--- a/libitm/config/linux/x86/tls.h	Thu Jan 29 13:41:48 2015 -0500
++++ b/libitm/config/linux/x86/tls.h	Thu Jan 29 13:41:51 2015 -0500
 @@ -25,16 +25,19 @@
  #ifndef LIBITM_X86_TLS_H
  #define LIBITM_X86_TLS_H 1

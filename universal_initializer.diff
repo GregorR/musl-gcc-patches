@@ -7,8 +7,9 @@ Subject: 2014-06-05  S. Gilles  <sgilles@terpmail.umd.edu>
 X-Git-Url: http://repo.or.cz/w/official-gcc.git/commitdiff_plain/95cdf3fdf2d440eb7775def8e35ab970651c33d9?hp=14a3093e9943937cbc63dfbf4d51ca60f8325b29
 git-svn-id: svn+ssh://gcc.gnu.org/svn/gcc/trunk@211289 138bc75d-0d04-0410-961f-82ee72b054a4
 
---- gcc-4.8.3.org/gcc/c/c-typeck.c	2014-08-03 20:52:09.257042137 +0200
-+++ gcc-4.8.3/gcc/c/c-typeck.c	2014-08-03 20:57:10.645042614 +0200
+diff -r be309b9bafc4 gcc/c/c-typeck.c
+--- a/gcc/c/c-typeck.c	Thu Jan 29 13:42:06 2015 -0500
++++ b/gcc/c/c-typeck.c	Thu Jan 29 13:42:08 2015 -0500
 @@ -62,9 +62,9 @@
     if expr.original_code == SIZEOF_EXPR.  */
  tree c_last_sizeof_arg;
