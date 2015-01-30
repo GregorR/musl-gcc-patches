@@ -13,3 +13,4 @@ microblaze.diff
 microblaze-size_t.diff
 sh.diff
 universal_initializer.diff
+gthread.diff
