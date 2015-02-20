@@ -12,4 +12,3 @@ aarch64.diff
 microblaze.diff
 microblaze-size_t.diff
 sh.diff
-gthread.diff
