@@ -1,11 +1,11 @@
 # HG changeset patch
-# Parent 1f830bec5a3f04b2718ce1395743d8e35c26341c
+# Parent 889b7d97216603795ba8c5f4da8e616bef8feb9d
 Use the generic implementation of libstdc++ primitives when we're on musl, not the glibc one.
 
-diff -r 1f830bec5a3f libstdc++-v3/configure.host
---- a/libstdc++-v3/configure.host	Thu Jan 29 14:04:56 2015 -0500
-+++ b/libstdc++-v3/configure.host	Thu Jan 29 14:06:11 2015 -0500
-@@ -264,6 +264,13 @@
+diff -r 889b7d972166 libstdc++-v3/configure.host
+--- a/libstdc++-v3/configure.host	Sun Jul 26 15:30:11 2015 -0400
++++ b/libstdc++-v3/configure.host	Sun Jul 26 15:32:09 2015 -0400
+@@ -266,6 +266,13 @@
      os_include_dir="os/bsd/freebsd"
      ;;
    gnu* | linux* | kfreebsd*-gnu | knetbsd*-gnu)
@@ -19,7 +19,7 @@ diff -r 1f830bec5a3f libstdc++-v3/configure.host
      if [ "$uclibc" = "yes" ]; then
        os_include_dir="os/uclibc"
      elif [ "$bionic" = "yes" ]; then
-@@ -272,6 +279,9 @@
+@@ -274,6 +281,9 @@
        os_include_dir="os/gnu-linux"
      fi
      ;;

@@ -1,10 +1,10 @@
 # HG changeset patch
-# Parent ad6952ac547606025a6fb8496584cbfe1b73a8b7
+# Parent 47dcb1f7b3a9c1b5d6b9d56303e7603fbe5a51f9
 A fix for libgomp to correctly request a POSIX version for time support.
 
-diff -r ad6952ac5476 libgomp/config/posix/time.c
---- a/libgomp/config/posix/time.c	Thu Jan 29 14:06:13 2015 -0500
-+++ b/libgomp/config/posix/time.c	Thu Jan 29 14:06:16 2015 -0500
+diff -r 47dcb1f7b3a9 libgomp/config/posix/time.c
+--- a/libgomp/config/posix/time.c	Sun Jul 26 15:32:11 2015 -0400
++++ b/libgomp/config/posix/time.c	Sun Jul 26 15:32:13 2015 -0400
 @@ -28,6 +28,8 @@
     The following implementation uses the most simple POSIX routines.
     If present, POSIX 4 clocks should be used instead.  */
