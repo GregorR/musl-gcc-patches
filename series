@@ -10,3 +10,4 @@ arm.diff
 mips.diff
 powerpc.diff
 gcc-ssp.diff
+universal_initializer.diff
