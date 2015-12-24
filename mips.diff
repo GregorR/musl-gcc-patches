@@ -1,10 +1,10 @@
 # HG changeset patch
-# Parent 23dcf3fd5965c339fd12202b74d049580db9375f
+# Parent 76b553fabcf19eec5df2df7f05ce15a4bf8c3996
 Support for mips-linux-musl.
 
-diff -r 23dcf3fd5965 gcc/config/mips/linux.h
---- a/gcc/config/mips/linux.h	Thu Dec 24 10:52:59 2015 -0500
-+++ b/gcc/config/mips/linux.h	Thu Dec 24 10:54:31 2015 -0500
+diff -r 76b553fabcf1 gcc/config/mips/linux.h
+--- a/gcc/config/mips/linux.h	Thu Dec 24 11:25:02 2015 -0500
++++ b/gcc/config/mips/linux.h	Thu Dec 24 11:25:04 2015 -0500
 @@ -31,6 +31,13 @@
  #undef UCLIBC_DYNAMIC_LINKER32
  #define UCLIBC_DYNAMIC_LINKER32 \

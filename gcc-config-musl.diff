@@ -1,10 +1,10 @@
 # HG changeset patch
-# Parent 698e2b270f3f50fc0036f507a7926e4d68d47be0
+# Parent 30a957f60ddb9ae9611c626b8303858c09efa53b
 Adding -mmusl as a musl libc specifier, and the necessary hacks for it to know how to find musl's dynamic linker.
 
-diff -r 698e2b270f3f gcc/config.gcc
---- a/gcc/config.gcc	Sun Jul 26 15:46:09 2015 -0400
-+++ b/gcc/config.gcc	Sun Jul 26 15:46:11 2015 -0400
+diff -r 30a957f60ddb gcc/config.gcc
+--- a/gcc/config.gcc	Thu Dec 24 11:24:45 2015 -0500
++++ b/gcc/config.gcc	Thu Dec 24 11:24:47 2015 -0500
 @@ -575,7 +575,7 @@
  esac
  
@@ -24,9 +24,9 @@ diff -r 698e2b270f3f gcc/config.gcc
      *)
        tm_defines="$tm_defines DEFAULT_LIBC=LIBC_GLIBC"
        ;;
-diff -r 698e2b270f3f gcc/config/linux.h
---- a/gcc/config/linux.h	Sun Jul 26 15:46:09 2015 -0400
-+++ b/gcc/config/linux.h	Sun Jul 26 15:46:11 2015 -0400
+diff -r 30a957f60ddb gcc/config/linux.h
+--- a/gcc/config/linux.h	Thu Dec 24 11:24:45 2015 -0500
++++ b/gcc/config/linux.h	Thu Dec 24 11:24:47 2015 -0500
 @@ -32,10 +32,12 @@
  #define OPTION_GLIBC  (DEFAULT_LIBC == LIBC_GLIBC)
  #define OPTION_UCLIBC (DEFAULT_LIBC == LIBC_UCLIBC)
@@ -167,9 +167,9 @@ diff -r 698e2b270f3f gcc/config/linux.h
  #if (DEFAULT_LIBC == LIBC_UCLIBC) && defined (SINGLE_LIBC) /* uClinux */
  /* This is a *uclinux* target.  We don't define below macros to normal linux
     versions, because doing so would require *uclinux* targets to include
-diff -r 698e2b270f3f gcc/config/linux.opt
---- a/gcc/config/linux.opt	Sun Jul 26 15:46:09 2015 -0400
-+++ b/gcc/config/linux.opt	Sun Jul 26 15:46:11 2015 -0400
+diff -r 30a957f60ddb gcc/config/linux.opt
+--- a/gcc/config/linux.opt	Thu Dec 24 11:24:45 2015 -0500
++++ b/gcc/config/linux.opt	Thu Dec 24 11:24:47 2015 -0500
 @@ -30,3 +30,7 @@
  muclibc
  Target Report RejectNegative Var(linux_libc,LIBC_UCLIBC) Negative(mbionic)
@@ -178,9 +178,9 @@ diff -r 698e2b270f3f gcc/config/linux.opt
 +mmusl
 +Target Report RejectNegative Var(linux_libc,LIBC_MUSL) Negative(mglibc)
 +Use musl C library
-diff -r 698e2b270f3f gcc/ginclude/stddef.h
---- a/gcc/ginclude/stddef.h	Sun Jul 26 15:46:09 2015 -0400
-+++ b/gcc/ginclude/stddef.h	Sun Jul 26 15:46:11 2015 -0400
+diff -r 30a957f60ddb gcc/ginclude/stddef.h
+--- a/gcc/ginclude/stddef.h	Thu Dec 24 11:24:45 2015 -0500
++++ b/gcc/ginclude/stddef.h	Thu Dec 24 11:24:47 2015 -0500
 @@ -184,6 +184,7 @@
  #ifndef _GCC_SIZE_T
  #ifndef _SIZET_
