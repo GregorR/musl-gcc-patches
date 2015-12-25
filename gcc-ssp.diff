@@ -1,6 +1,7 @@
---- gcc-4.7.4.org/gcc/gcc.c
-+++ gcc-4.7.4/gcc/gcc.c
-@@ -603,7 +603,7 @@
+diff -r a5e074ee9347 gcc/gcc.c
+--- a/gcc/gcc.c	Fri Dec 25 15:16:56 2015 -0500
++++ b/gcc/gcc.c	Fri Dec 25 15:16:59 2015 -0500
+@@ -653,7 +653,7 @@
  
  #ifndef LINK_SSP_SPEC
  #ifdef TARGET_LIBC_PROVIDES_SSP

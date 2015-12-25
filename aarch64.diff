@@ -1,6 +1,6 @@
-diff -r 2fdeb2c3a347 gcc/config/aarch64/aarch64-linux.h
---- a/gcc/config/aarch64/aarch64-linux.h	Thu Jan 29 13:41:57 2015 -0500
-+++ b/gcc/config/aarch64/aarch64-linux.h	Thu Jan 29 13:41:59 2015 -0500
+diff -r b949cf6ae064 gcc/config/aarch64/aarch64-linux.h
+--- a/gcc/config/aarch64/aarch64-linux.h	Fri Dec 25 15:16:38 2015 -0500
++++ b/gcc/config/aarch64/aarch64-linux.h	Fri Dec 25 15:16:42 2015 -0500
 @@ -21,7 +21,11 @@
  #ifndef GCC_AARCH64_LINUX_H
  #define GCC_AARCH64_LINUX_H

@@ -1,10 +1,10 @@
 # HG changeset patch
-# Parent ec1984833740e9cb3223001a8fa26c03b5dcc93c
+# Parent a486e19894520b80db43d63b0538e53c7dd87554
 Use the generic implementation of libstdc++ primitives when we're on musl, not the glibc one.
 
-diff -r ec1984833740 libstdc++-v3/configure.host
---- a/libstdc++-v3/configure.host	Thu Jan 29 13:38:28 2015 -0500
-+++ b/libstdc++-v3/configure.host	Thu Jan 29 13:41:38 2015 -0500
+diff -r a486e1989452 libstdc++-v3/configure.host
+--- a/libstdc++-v3/configure.host	Fri Dec 25 15:12:57 2015 -0500
++++ b/libstdc++-v3/configure.host	Fri Dec 25 15:16:08 2015 -0500
 @@ -263,6 +263,13 @@
      os_include_dir="os/bsd/freebsd"
      ;;

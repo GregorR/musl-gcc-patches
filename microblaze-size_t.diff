@@ -21,9 +21,9 @@ Signed-off-by: David Holsgrove <david.holsgrove@xilinx.com>
  gcc/config/microblaze/microblaze.h |    6 ++++++
  1 file changed, 6 insertions(+)
 
-diff -r d9fb78d89e6f gcc/config/microblaze/microblaze.h
---- a/gcc/config/microblaze/microblaze.h	Thu Jan 29 13:42:01 2015 -0500
-+++ b/gcc/config/microblaze/microblaze.h	Thu Jan 29 13:42:04 2015 -0500
+diff -r accbbad13ee4 gcc/config/microblaze/microblaze.h
+--- a/gcc/config/microblaze/microblaze.h	Fri Dec 25 15:16:45 2015 -0500
++++ b/gcc/config/microblaze/microblaze.h	Fri Dec 25 15:16:49 2015 -0500
 @@ -219,6 +219,12 @@
  #undef PTRDIFF_TYPE
  #define PTRDIFF_TYPE "int"

@@ -1,11 +1,11 @@
 # HG changeset patch
-# Parent 7626e1f2b51fb2ee53358cab627ef4d3206cd75a
+# Parent c68dba2c24146bc3fc8dabf6a05e1663b7b4159a
 Support for powerpc-linux-musl.
 
-diff -r 7626e1f2b51f gcc/config.gcc
---- a/gcc/config.gcc	Thu Jan 29 13:41:55 2015 -0500
-+++ b/gcc/config.gcc	Thu Jan 29 13:41:57 2015 -0500
-@@ -2138,6 +2138,10 @@
+diff -r c68dba2c2414 gcc/config.gcc
+--- a/gcc/config.gcc	Fri Dec 25 15:16:35 2015 -0500
++++ b/gcc/config.gcc	Fri Dec 25 15:16:38 2015 -0500
+@@ -2148,6 +2148,10 @@
  	    powerpc*-*-linux*paired*)
  		tm_file="${tm_file} rs6000/750cl.h" ;;
  	esac
@@ -16,10 +16,10 @@ diff -r 7626e1f2b51f gcc/config.gcc
  	if test x${enable_secureplt} = xyes; then
  		tm_file="rs6000/secureplt.h ${tm_file}"
  	fi
-diff -r 7626e1f2b51f gcc/config/rs6000/linux64.h
---- a/gcc/config/rs6000/linux64.h	Thu Jan 29 13:41:55 2015 -0500
-+++ b/gcc/config/rs6000/linux64.h	Thu Jan 29 13:41:57 2015 -0500
-@@ -374,17 +374,21 @@
+diff -r c68dba2c2414 gcc/config/rs6000/linux64.h
+--- a/gcc/config/rs6000/linux64.h	Fri Dec 25 15:16:35 2015 -0500
++++ b/gcc/config/rs6000/linux64.h	Fri Dec 25 15:16:38 2015 -0500
+@@ -370,17 +370,21 @@
  #endif
  #define UCLIBC_DYNAMIC_LINKER32 "/lib/ld-uClibc.so.0"
  #define UCLIBC_DYNAMIC_LINKER64 "/lib/ld64-uClibc.so.0"
@@ -45,17 +45,17 @@ diff -r 7626e1f2b51f gcc/config/rs6000/linux64.h
  
  #undef  DEFAULT_ASM_ENDIAN
  #if (TARGET_DEFAULT & MASK_LITTLE_ENDIAN)
-diff -r 7626e1f2b51f gcc/config/rs6000/secureplt.h
---- a/gcc/config/rs6000/secureplt.h	Thu Jan 29 13:41:55 2015 -0500
-+++ b/gcc/config/rs6000/secureplt.h	Thu Jan 29 13:41:57 2015 -0500
+diff -r c68dba2c2414 gcc/config/rs6000/secureplt.h
+--- a/gcc/config/rs6000/secureplt.h	Fri Dec 25 15:16:35 2015 -0500
++++ b/gcc/config/rs6000/secureplt.h	Fri Dec 25 15:16:38 2015 -0500
 @@ -18,3 +18,4 @@
  <http://www.gnu.org/licenses/>.  */
  
  #define CC1_SECURE_PLT_DEFAULT_SPEC "-msecure-plt"
 +#define LINK_SECURE_PLT_DEFAULT_SPEC "--secure-plt"
-diff -r 7626e1f2b51f gcc/config/rs6000/sysv4.h
---- a/gcc/config/rs6000/sysv4.h	Thu Jan 29 13:41:55 2015 -0500
-+++ b/gcc/config/rs6000/sysv4.h	Thu Jan 29 13:41:57 2015 -0500
+diff -r c68dba2c2414 gcc/config/rs6000/sysv4.h
+--- a/gcc/config/rs6000/sysv4.h	Fri Dec 25 15:16:35 2015 -0500
++++ b/gcc/config/rs6000/sysv4.h	Fri Dec 25 15:16:38 2015 -0500
 @@ -537,6 +537,9 @@
  #ifndef CC1_SECURE_PLT_DEFAULT_SPEC
  #define CC1_SECURE_PLT_DEFAULT_SPEC ""

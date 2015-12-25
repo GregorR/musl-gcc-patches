@@ -1,6 +1,6 @@
-diff -r 552906ada59b gcc/configure
---- a/gcc/configure	Thu Jan 29 13:41:44 2015 -0500
-+++ b/gcc/configure	Thu Jan 29 13:41:46 2015 -0500
+diff -r cd50df2475e3 gcc/configure
+--- a/gcc/configure	Fri Dec 25 15:16:18 2015 -0500
++++ b/gcc/configure	Fri Dec 25 15:16:22 2015 -0500
 @@ -26852,6 +26852,9 @@
  else
    gcc_cv_libc_provides_ssp=no
@@ -29,9 +29,9 @@ diff -r 552906ada59b gcc/configure
  esac
  
  if test x$gcc_cv_target_dl_iterate_phdr = xyes; then
-diff -r 552906ada59b gcc/configure.ac
---- a/gcc/configure.ac	Thu Jan 29 13:41:44 2015 -0500
-+++ b/gcc/configure.ac	Thu Jan 29 13:41:46 2015 -0500
+diff -r cd50df2475e3 gcc/configure.ac
+--- a/gcc/configure.ac	Fri Dec 25 15:16:18 2015 -0500
++++ b/gcc/configure.ac	Fri Dec 25 15:16:22 2015 -0500
 @@ -4776,6 +4776,9 @@
        gcc_cv_libc_provides_ssp,
        [gcc_cv_libc_provides_ssp=no

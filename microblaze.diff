@@ -1,11 +1,11 @@
 # HG changeset patch
-# Parent eb020f66032d779cbaeda8acb97a73d3108189f5
+# Parent c0ba776169de0165fd173f289e4e3855ea4d8b56
 Microblaze support (again).
 
-diff -r eb020f66032d gcc/config/microblaze/linux.h
---- a/gcc/config/microblaze/linux.h	Thu Jan 29 13:41:59 2015 -0500
-+++ b/gcc/config/microblaze/linux.h	Thu Jan 29 13:42:01 2015 -0500
-@@ -25,7 +25,22 @@
+diff -r c0ba776169de gcc/config/microblaze/linux.h
+--- a/gcc/config/microblaze/linux.h	Fri Dec 25 15:16:42 2015 -0500
++++ b/gcc/config/microblaze/linux.h	Fri Dec 25 15:16:45 2015 -0500
+@@ -28,7 +28,22 @@
  #undef TLS_NEEDS_GOT
  #define TLS_NEEDS_GOT 1
  

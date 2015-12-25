@@ -1,10 +1,10 @@
 # HG changeset patch
-# Parent 2951aeba3ac9a3f39653cbd56dff41c8f1569b2f
+# Parent 07e20048931c7f84160dfdab3a6a8a1b08d3207e
 Support for mips-linux-musl.
 
-diff -r 2951aeba3ac9 gcc/config/mips/linux.h
---- a/gcc/config/mips/linux.h	Thu Jan 29 13:41:53 2015 -0500
-+++ b/gcc/config/mips/linux.h	Thu Jan 29 13:41:55 2015 -0500
+diff -r 07e20048931c gcc/config/mips/linux.h
+--- a/gcc/config/mips/linux.h	Fri Dec 25 15:16:32 2015 -0500
++++ b/gcc/config/mips/linux.h	Fri Dec 25 15:16:35 2015 -0500
 @@ -18,3 +18,10 @@
  <http://www.gnu.org/licenses/>.  */
  
