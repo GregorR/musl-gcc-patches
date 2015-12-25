@@ -1,11 +1,10 @@
 # HG changeset patch
-# Parent 65cd23493c45f2a531ca15ffea563d6110143cdd
+# Parent 301217b079b23bdd427120d47fda630be845dd8d
 New config.sub for GCC versions too early for the update.
 
-
-diff -r 65cd23493c45 -r 355cec477536 config.sub
---- a/config.sub	Tue Aug 27 15:49:27 2013 -0400
-+++ b/config.sub	Tue Aug 27 15:51:14 2013 -0400
+diff -r 301217b079b2 config.sub
+--- a/config.sub	Fri Dec 25 15:06:41 2015 -0500
++++ b/config.sub	Fri Dec 25 15:06:44 2015 -0500
 @@ -4,7 +4,7 @@
  #   2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
  #   2011 Free Software Foundation, Inc.

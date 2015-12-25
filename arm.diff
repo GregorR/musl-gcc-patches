@@ -1,8 +1,8 @@
 Support for arm-linux-musl.
 
-diff -r 8801a3f6d050 gcc/config/arm/linux-eabi.h
---- a/gcc/config/arm/linux-eabi.h	Tue Aug 27 15:47:31 2013 -0400
-+++ b/gcc/config/arm/linux-eabi.h	Tue Aug 27 15:47:37 2013 -0400
+diff -r c45640afa341 gcc/config/arm/linux-eabi.h
+--- a/gcc/config/arm/linux-eabi.h	Fri Dec 25 15:06:47 2015 -0500
++++ b/gcc/config/arm/linux-eabi.h	Fri Dec 25 15:06:51 2015 -0500
 @@ -64,6 +64,23 @@
  #undef  GLIBC_DYNAMIC_LINKER
  #define GLIBC_DYNAMIC_LINKER "/lib/ld-linux.so.3"
@@ -27,9 +27,9 @@ diff -r 8801a3f6d050 gcc/config/arm/linux-eabi.h
  /* At this point, bpabi.h will have clobbered LINK_SPEC.  We want to
     use the GNU/Linux version, not the generic BPABI version.  */
  #undef  LINK_SPEC
-diff -r 8801a3f6d050 libitm/config/arm/hwcap.cc
---- a/libitm/config/arm/hwcap.cc	Tue Aug 27 15:47:31 2013 -0400
-+++ b/libitm/config/arm/hwcap.cc	Tue Aug 27 15:47:37 2013 -0400
+diff -r c45640afa341 libitm/config/arm/hwcap.cc
+--- a/libitm/config/arm/hwcap.cc	Fri Dec 25 15:06:47 2015 -0500
++++ b/libitm/config/arm/hwcap.cc	Fri Dec 25 15:06:51 2015 -0500
 @@ -40,7 +40,11 @@
  
  #ifdef __linux__

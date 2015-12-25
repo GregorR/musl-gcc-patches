@@ -1,11 +1,11 @@
 # HG changeset patch
-# Parent 2ffe76b215fdb082cbbc262536077627757fa9bf
+# Parent 2f0263e2cdd9e9adeab9ab40259bdf92fb7abf92
 Support for powerpc-linux-musl.
 
-diff -r 2ffe76b215fd gcc/config.gcc
---- a/gcc/config.gcc	Fri Mar 29 16:41:26 2013 -0400
-+++ b/gcc/config.gcc	Fri Mar 29 16:41:28 2013 -0400
-@@ -2112,6 +2112,10 @@
+diff -r 2f0263e2cdd9 gcc/config.gcc
+--- a/gcc/config.gcc	Fri Dec 25 15:06:54 2015 -0500
++++ b/gcc/config.gcc	Fri Dec 25 15:06:57 2015 -0500
+@@ -2094,6 +2094,10 @@
  	    powerpc*-*-linux*paired*)
  		tm_file="${tm_file} rs6000/750cl.h" ;;
  	esac
@@ -16,10 +16,10 @@ diff -r 2ffe76b215fd gcc/config.gcc
  	if test x${enable_secureplt} = xyes; then
  		tm_file="rs6000/secureplt.h ${tm_file}"
  	fi
-diff -r 2ffe76b215fd gcc/config/rs6000/linux64.h
---- a/gcc/config/rs6000/linux64.h	Fri Mar 29 16:41:26 2013 -0400
-+++ b/gcc/config/rs6000/linux64.h	Fri Mar 29 16:41:28 2013 -0400
-@@ -364,17 +364,21 @@
+diff -r 2f0263e2cdd9 gcc/config/rs6000/linux64.h
+--- a/gcc/config/rs6000/linux64.h	Fri Dec 25 15:06:54 2015 -0500
++++ b/gcc/config/rs6000/linux64.h	Fri Dec 25 15:06:57 2015 -0500
+@@ -362,17 +362,21 @@
  #define GLIBC_DYNAMIC_LINKER64 "/lib64/ld64.so.1"
  #define UCLIBC_DYNAMIC_LINKER32 "/lib/ld-uClibc.so.0"
  #define UCLIBC_DYNAMIC_LINKER64 "/lib/ld64-uClibc.so.0"
@@ -45,18 +45,18 @@ diff -r 2ffe76b215fd gcc/config/rs6000/linux64.h
  
  
  #define LINK_OS_LINUX_SPEC32 "-m elf32ppclinux %{!shared: %{!static: \
-diff -r 2ffe76b215fd gcc/config/rs6000/secureplt.h
---- a/gcc/config/rs6000/secureplt.h	Fri Mar 29 16:41:26 2013 -0400
-+++ b/gcc/config/rs6000/secureplt.h	Fri Mar 29 16:41:28 2013 -0400
+diff -r 2f0263e2cdd9 gcc/config/rs6000/secureplt.h
+--- a/gcc/config/rs6000/secureplt.h	Fri Dec 25 15:06:54 2015 -0500
++++ b/gcc/config/rs6000/secureplt.h	Fri Dec 25 15:06:57 2015 -0500
 @@ -18,3 +18,4 @@
  <http://www.gnu.org/licenses/>.  */
  
  #define CC1_SECURE_PLT_DEFAULT_SPEC "-msecure-plt"
 +#define LINK_SECURE_PLT_DEFAULT_SPEC "--secure-plt"
-diff -r 2ffe76b215fd gcc/config/rs6000/sysv4.h
---- a/gcc/config/rs6000/sysv4.h	Fri Mar 29 16:41:26 2013 -0400
-+++ b/gcc/config/rs6000/sysv4.h	Fri Mar 29 16:41:28 2013 -0400
-@@ -551,6 +551,9 @@
+diff -r 2f0263e2cdd9 gcc/config/rs6000/sysv4.h
+--- a/gcc/config/rs6000/sysv4.h	Fri Dec 25 15:06:54 2015 -0500
++++ b/gcc/config/rs6000/sysv4.h	Fri Dec 25 15:06:57 2015 -0500
+@@ -566,6 +566,9 @@
  #ifndef CC1_SECURE_PLT_DEFAULT_SPEC
  #define CC1_SECURE_PLT_DEFAULT_SPEC ""
  #endif
@@ -66,7 +66,7 @@ diff -r 2ffe76b215fd gcc/config/rs6000/sysv4.h
  
  /* Pass -G xxx to the compiler and set correct endian mode.  */
  #define	CC1_SPEC "%{G*} %(cc1_cpu) \
-@@ -611,7 +614,8 @@
+@@ -626,7 +629,8 @@
  %{mlittle: --oformat elf32-powerpcle } %{mlittle-endian: --oformat elf32-powerpcle } \
  %{!mlittle: %{!mlittle-endian: %{!mbig: %{!mbig-endian: \
      %{mcall-i960-old: --oformat elf32-powerpcle} \
@@ -76,7 +76,7 @@ diff -r 2ffe76b215fd gcc/config/rs6000/sysv4.h
  
  /* Any specific OS flags.  */
  #define LINK_OS_SPEC "\
-@@ -789,15 +793,18 @@
+@@ -804,15 +808,18 @@
  
  #define GLIBC_DYNAMIC_LINKER "/lib/ld.so.1"
  #define UCLIBC_DYNAMIC_LINKER "/lib/ld-uClibc.so.0"
@@ -98,7 +98,7 @@ diff -r 2ffe76b215fd gcc/config/rs6000/sysv4.h
  
  #define LINK_OS_LINUX_SPEC "-m elf32ppclinux %{!shared: %{!static: \
    %{rdynamic:-export-dynamic} \
-@@ -923,6 +930,7 @@
+@@ -938,6 +945,7 @@
    { "cc1_endian_little",	CC1_ENDIAN_LITTLE_SPEC },		\
    { "cc1_endian_default",	CC1_ENDIAN_DEFAULT_SPEC },		\
    { "cc1_secure_plt_default",	CC1_SECURE_PLT_DEFAULT_SPEC },		\
@@ -106,8 +106,9 @@ diff -r 2ffe76b215fd gcc/config/rs6000/sysv4.h
    { "cpp_os_ads",		CPP_OS_ADS_SPEC },			\
    { "cpp_os_yellowknife",	CPP_OS_YELLOWKNIFE_SPEC },		\
    { "cpp_os_mvme",		CPP_OS_MVME_SPEC },			\
---- a/libgcc/config/rs6000/linux-unwind.h	Wed Nov 21 21:23:49 2012 -0500
-+++ b/libgcc/config/rs6000/linux-unwind.h	Wed Nov 21 21:45:58 2012 -0500
+diff -r 2f0263e2cdd9 libgcc/config/rs6000/linux-unwind.h
+--- a/libgcc/config/rs6000/linux-unwind.h	Fri Dec 25 15:06:54 2015 -0500
++++ b/libgcc/config/rs6000/linux-unwind.h	Fri Dec 25 15:06:57 2015 -0500
 @@ -176,6 +176,7 @@
  }
  #endif

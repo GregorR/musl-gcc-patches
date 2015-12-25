@@ -1,5 +1,6 @@
---- gcc-4.7.4.org/gcc/gcc.c
-+++ gcc-4.7.4/gcc/gcc.c
+diff -r 900652b2bfdc gcc/gcc.c
+--- a/gcc/gcc.c	Fri Dec 25 15:06:57 2015 -0500
++++ b/gcc/gcc.c	Fri Dec 25 15:07:00 2015 -0500
 @@ -603,7 +603,7 @@
  
  #ifndef LINK_SSP_SPEC

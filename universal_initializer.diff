@@ -7,8 +7,9 @@ Subject: 2014-06-05  S. Gilles  <sgilles@terpmail.umd.edu>
 X-Git-Url: http://repo.or.cz/w/official-gcc.git/commitdiff_plain/95cdf3fdf2d440eb7775def8e35ab970651c33d9?hp=14a3093e9943937cbc63dfbf4d51ca60f8325b29
 git-svn-id: svn+ssh://gcc.gnu.org/svn/gcc/trunk@211289 138bc75d-0d04-0410-961f-82ee72b054a4
 
---- gcc-4.7.4/gcc/c-typeck.c	2012-09-20 22:50:17.000000000 +0200
-+++ gcc-4.7.4.patched/gcc/c-typeck.c	2014-08-03 16:26:14.515016910 +0200
+diff -r ba71a4c285bf gcc/c-typeck.c
+--- a/gcc/c-typeck.c	Fri Dec 25 15:07:00 2015 -0500
++++ b/gcc/c-typeck.c	Fri Dec 25 15:07:03 2015 -0500
 @@ -68,9 +68,9 @@
  /* The level of nesting inside "typeof".  */
  int in_typeof;
