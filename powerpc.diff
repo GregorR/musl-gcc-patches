@@ -106,33 +106,3 @@ diff -r 7626e1f2b51f gcc/config/rs6000/sysv4.h
    { "cpp_os_ads",		CPP_OS_ADS_SPEC },			\
    { "cpp_os_yellowknife",	CPP_OS_YELLOWKNIFE_SPEC },		\
    { "cpp_os_mvme",		CPP_OS_MVME_SPEC },			\
---- a/libgcc/config/rs6000/linux-unwind.h	Wed Nov 21 21:23:49 2012 -0500
-+++ b/libgcc/config/rs6000/linux-unwind.h	Wed Nov 21 21:45:58 2012 -0500
-@@ -176,6 +176,7 @@
- }
- #endif
- 
-+#ifdef __GLIBC__
- /* Find an entry in the process auxiliary vector.  The canonical way to
-    test for VMX is to look at AT_HWCAP.  */
- 
-@@ -207,6 +208,7 @@
-       return auxp->a_val;
-   return 0;
- }
-+#endif
- 
- /* Do code reading to identify a signal frame, and set the frame
-    state data appropriately.  See unwind-dw2.c for the structs.  */
-@@ -253,7 +255,11 @@
- 
-   if (hwcap == 0)
-     {
-+#ifdef __GLIBC__
-       hwcap = ppc_linux_aux_vector (16);
-+#else
-+      hwcap = -1;
-+#endif
-       /* These will already be set if we found AT_HWCAP.  A nonzero
- 	 value stops us looking again if for some reason we couldn't
- 	 find AT_HWCAP.  */
